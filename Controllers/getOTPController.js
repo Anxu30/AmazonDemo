@@ -14,13 +14,13 @@ const postman=nodemailer.createTransport({
   port: 465,
   secure: true,
   auth:{
-user:'anuj.chaudhary.2430@gmail.com',
-pass:'dgcrubwzevqgjrfj'
+user:'*****************',
+pass:'*******************'
   }
 })
  
 const letter={
-  from:'anuj.chaudhary.2430@gmail.com',
+  from:'*********************',
   to:`${receiverEmail}`,
   subject:'Verification OTP for your Amazon Demo App:',
   html: `<h2>Dear User,</h2>
@@ -34,4 +34,5 @@ console.log("OTP Sent Successfully:", OTP);
 req.session.otp = OTP;
 res.json({msg:"ok"})
 }
+
 module.exports=getOTP;
