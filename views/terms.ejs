@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Conditions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-yellow-100 via-orange-50 to-yellow-200 min-h-screen flex flex-col">
+  
+
+  <%- include('../partials/nav') %>
+
+ 
+  <div class="flex-1 flex items-center justify-center py-10 px-6">
+    <div class="max-w-4xl w-full bg-white rounded-3xl shadow-2xl p-10 border border-yellow-200">
+      <h1 class="text-4xl font-extrabold text-gray-900 mb-6 text-center">Terms & Conditions</h1>
+      <p class="text-gray-600 text-lg mb-6 text-center">Please read these terms and conditions carefully before using our Amazon Demo App.</p>
+      
+      <div class="space-y-6 text-gray-700 leading-relaxed">
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">1. Acceptance of Terms</h2>
+          <p>By creating an account or using our services, you agree to be bound by these terms and all applicable laws and regulations.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">2. User Accounts</h2>
+          <p>You are responsible for maintaining the confidentiality of your login details and for all activities that occur under your account.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">3. Orders & Payments</h2>
+          <p>All orders placed through this demo app are for testing purposes only. No real transactions or deliveries will occur.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">4. Prohibited Activities</h2>
+          <ul class="list-disc ml-6">
+            <li>Attempting to hack, exploit or misuse the system.</li>
+            <li>Creating multiple fake accounts for testing abuse.</li>
+            <li>Sharing your login credentials with unauthorized users.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">5. Limitation of Liability</h2>
+          <p>This is a <strong>demo application</strong>. We are not responsible for any data loss, misuse, or errors arising while using this app.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xl font-semibold text-gray-900">6. Changes to Terms</h2>
+          <p>We may update or change these terms at any time. Continued use of the app means you accept the new terms.</p>
+        </div>
+      </div>
+
+     
+      <div class="mt-10 text-center">
+        <a href="/signup" 
+           class="inline-block bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition">
+          Back to Sign Up
+        </a>
+      </div>
+    </div>
+  </div>
+
+  
+  <footer class="bg-gray-800 text-white text-center py-4 text-sm">
+    &copy; <%= new Date().getFullYear() %> Amazon Demo App. All rights reserved.
+  </footer>
+</body>
+</html>

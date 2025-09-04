@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon-Demo</title>
+</head>
+<body style="background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); min-height: 100vh; display: flex; flex-direction: column; font-family: 'Segoe UI', Arial, sans-serif;">
+  <%- include('../partials/nav') %>
+
+  <style>
+    .home-hero {
+      max-width: 800px;
+      width: 100%;
+      background: rgba(255,255,255,0.85);
+      border-radius: 2.5rem;
+      box-shadow: 0 12px 40px 0 rgba(31,38,135,0.18), 0 1.5px 8px 0 rgba(99,102,241,0.08);
+      padding: 3.5rem 2.5rem 2.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s cubic-bezier(.23,1.01,.32,1) both;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .home-hero::before {
+      content: "";
+      position: absolute;
+      top: -60px; left: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #6366f1 0%, #60a5fa 100%);
+      opacity: 0.13;
+      z-index: 0;
+      border-radius: 50%;
+    }
+    .home-hero::after {
+      content: "";
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, #16a34a 0%, #60a5fa 100%);
+      opacity: 0.10;
+      z-index: 0;
+      border-radius: 50%;
+    }
+    .home-hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #2563eb;
+      margin-bottom: 1.2rem;
+      letter-spacing: -1px;
+      z-index: 1;
+      position: relative;
+      text-shadow: 0 2px 8px rgba(99,102,241,0.08);
+    }
+    .home-hero h1 span {
+      color: #1e293b;
+      background: linear-gradient(90deg, #6366f1 30%, #16a34a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .home-hero p {
+      font-size: 1.25rem;
+      color: #475569;
+      margin-bottom: 2.2rem;
+      z-index: 1;
+      position: relative;
+      line-height: 1.7;
+    }
+    .home-hero .highlight {
+      color: #6366f1;
+      font-weight: 600;
+      background: #f1f5f9;
+      padding: 0.1em 0.5em;
+      border-radius: 0.5em;
+      margin: 0 0.2em;
+      box-shadow: 0 1px 4px rgba(99,102,241,0.07);
+    }
+    .home-cta-group {
+      display: flex;
+      flex-direction: row;
+      gap: 1.2rem;
+      max-width: 420px;
+      margin: 0 auto;
+      justify-content: center;
+      flex-wrap: wrap;
+      z-index: 1;
+      position: relative;
+    }
+    .home-cta {
+      padding: 1rem 0;
+      min-width: 140px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 1rem;
+      text-decoration: none;
+      transition: transform 0.13s, box-shadow 0.13s, background 0.13s, color 0.13s;
+      box-shadow: 0 2px 8px rgba(99,102,241,0.07);
+      display: inline-block;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    .home-cta.primary {
+      background: linear-gradient(90deg, #6366f1 0%, #60a5fa 100%);
+      color: #fff;
+    }
+    .home-cta.primary:hover {
+      background: linear-gradient(90deg, #60a5fa 0%, #6366f1 100%);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 4px 16px rgba(99,102,241,0.13);
+    }
+    .home-cta.secondary {
+      background: #fff;
+      border: 2px solid #6366f1;
+      color: #6366f1;
+    }
+    .home-cta.secondary:hover {
+      background: #f1f5f9;
+      color: #37475a;
+      transform: translateY(-2px) scale(1.04);
+      border-color: #60a5fa;
+    }
+    .home-cta.danger {
+      background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+      color: #fff;
+    }
+    .home-cta.danger:hover {
+      background: linear-gradient(90deg, #f87171 0%, #ef4444 100%);
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 4px 16px rgba(239,68,68,0.13);
+    }
+    @media (max-width: 600px) {
+      .home-hero {
+        padding: 2rem 0.7rem 1.5rem 0.7rem;
+        border-radius: 1.2rem;
+      }
+      .home-hero h1 {
+        font-size: 2rem;
+      }
+      .home-cta-group {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+
+  <% if (!signin) { %>
+    <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 0.5rem;">
+      <div class="home-hero">
+        <h1>
+          Welcome to <span>Amazon-Demo</span>
+        </h1>
+        <p>
+          Discover a <span class="highlight">seamless shopping experience</span>.<br>
+          <span class="highlight">Sign in</span> to your account or <span class="highlight">create a new one</span> to get started!
+        </p>
+        <div class="home-cta-group">
+          <a href="/signin" class="home-cta primary">Sign In</a>
+          <a href="/signup" class="home-cta secondary">Sign Up</a>
+        </div>
+      </div>
+    </main>
+  <% } %>
+
+  <% if (signin) { %>
+    <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 0.5rem;">
+      <div class="home-hero">
+        <h1 style="color: #16a34a;">
+          Welcome Back, <%= username %> <span style="font-size:1.7rem;">👋</span>
+        </h1>
+        <p>
+          You are now signed in to your <span class="highlight">Amazon-Demo</span> account.<br>
+          Start exploring our products and enjoy shopping!
+        </p>
+        <div class="home-cta-group">
+          <a href="/products" class="home-cta primary">Shop Now</a>
+          <a href="/orders" class="home-cta secondary">My Orders</a>
+          <a href="/signout" class="home-cta danger">Sign Out</a>
+        </div>
+      </div>
+    </main>
+  <% } %>
+</body>
+</html>

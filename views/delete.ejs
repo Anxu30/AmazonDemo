@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Account</title>
+  <style>
+    .delete-card {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 32px 28px 24px 28px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #cb2d3e 0%, #ef473a 100%);
+      box-shadow: 0 6px 24px rgba(120, 40, 40, 0.18);
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .delete-card h2 {
+      margin-bottom: 18px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .delete-card p {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    .delete-card label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .delete-card input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: none;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      outline: none;
+      transition: background 0.2s;
+    }
+    .delete-card input[type="password"]:focus {
+      background: rgba(255,255,255,0.25);
+    }
+    .delete-card input[type="submit"] {
+      width: 100%;
+      margin-top: 18px;
+      padding: 12px 0;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(90deg, #ff512f 0%, #dd2476 100%);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .delete-card input[type="submit"]:hover {
+      background: linear-gradient(90deg, #dd2476 0%, #ff512f 100%);
+    }
+    .delete-card .cancel-link {
+      display: block;
+      margin-top: 18px;
+      text-align: center;
+      color: #fff;
+      text-decoration: underline;
+      font-size: 0.98rem;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .delete-card .cancel-link:hover {
+      opacity: 1;
+      color: #e0e0e0;
+    }
+    .delete-card .error-message {
+      color: #ffe0e0;
+      background: rgba(0,0,0,0.15);
+      border-radius: 5px;
+      padding: 8px 12px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 0.98rem;
+    }
+  </style>
+</head>
+<body>
+  <%-include('../partials/nav.ejs')%>
+  <div class="delete-card">
+    <h2>Delete Account</h2>
+    <p>
+      Are you sure you want to delete your account? <br>
+      This action is <b>irreversible</b> and all your data will be permanently removed.
+    </p>
+    <form action="/delete" method="post" autocomplete="off">
+      <label for="currentpassword">Enter your password to confirm</label>
+      <input type="password" name="currentpassword" id="currentpassword" required>
+      <input type="submit" value="Delete Account">
+    </form>
+    <a class="cancel-link" href="/profile">Cancel</a>
+    
+  </div>
+</body>
+</html>

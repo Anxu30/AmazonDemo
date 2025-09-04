@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EditAddress</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+<%-include('../partials/nav.ejs')%>
+<div class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-200 via-blue-100 to-purple-200 py-10">
+  <div class="bg-white bg-opacity-90 rounded-3xl shadow-2xl p-8 w-full max-w-md relative overflow-hidden">
+    <div class="absolute -top-10 -right-10 w-32 h-32 bg-gradient-to-tr from-indigo-400 to-purple-300 opacity-20 rounded-full z-0"></div>
+    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-gradient-to-bl from-blue-300 to-indigo-200 opacity-20 rounded-full z-0"></div>
+    <h2 class="text-3xl font-extrabold text-indigo-700 mb-6 text-center z-10 relative">Edit Your Address</h2>
+    <form class="flex flex-col gap-5 z-10 relative" action="/editAddress/<%=meta.email%>" method="post">
+    
+      <div>
+        <label for="street" class="block text-sm font-semibold text-indigo-600 mb-1">Street</label>
+        <input 
+          type="text" 
+          name="street" 
+          id="street" 
+          class="w-full rounded-xl border-2 border-indigo-200 focus:border-indigo-400 transition p-3 bg-gradient-to-br from-indigo-50 to-white"
+          placeholder="Your Street"
+          value="<%=meta?meta.street:''%>"
+        >
+      </div>
+      <div>
+        <label for="city" class="block text-sm font-semibold text-indigo-600 mb-1">City</label>
+        <input 
+          type="text" 
+          name="city" 
+          id="city" 
+          class="w-full rounded-xl border-2 border-indigo-200 focus:border-indigo-400 transition p-3 bg-gradient-to-br from-indigo-50 to-white"
+          placeholder="Your City"
+          value="<%=meta?meta.city:''%>"
+          
+        >
+      </div>
+      <div>
+        <label for="state" class="block text-sm font-semibold text-indigo-600 mb-1">State</label>
+        <input 
+          type="text" 
+          name="state" 
+          id="state" 
+          class="w-full rounded-xl border-2 border-indigo-200 focus:border-indigo-400 transition p-3 bg-gradient-to-br from-indigo-50 to-white"
+          placeholder="State"
+          value="<%=meta?meta.state:''%>"
+        >
+      </div>
+      <div>
+        <label for="pincode" class="block text-sm font-semibold text-indigo-600 mb-1">ZipCode</label>
+        <input 
+          type="Number" 
+          name="pincode" 
+          id="pincode" 
+          placeholder="ZipCode"
+          class="w-full rounded-xl border-2 border-indigo-200 focus:border-indigo-400 transition p-3 bg-gradient-to-br from-indigo-50 to-white"
+          value="<%=meta?meta.pincode:''%>"
+        >
+      </div>
+      <div>
+        <label for="country" class="block text-sm font-semibold text-indigo-600 mb-1">Country</label>
+        <input 
+          type="text" 
+          name="country" 
+          id="country" 
+          placeholder="Country"
+          class="w-full rounded-xl border-2 border-indigo-200 focus:border-indigo-400 transition p-3 bg-gradient-to-br from-indigo-50 to-white"
+          value="<%=meta?meta.country:''%>"
+        >
+      </div>
+      
+      <div class="flex justify-between items-center mt-4 gap-4">
+        <input 
+          type="submit" 
+          value="Save" 
+          class="flex-1 bg-gradient-to-r from-indigo-500 to-purple-400 text-white font-bold py-2 rounded-xl shadow-md hover:from-indigo-600 hover:to-purple-500 transition cursor-pointer"
+        >
+        <a 
+          href="/address" 
+          class="flex-1 text-center bg-gradient-to-r from-gray-200 to-indigo-100 text-indigo-700 font-semibold py-2 rounded-xl shadow hover:from-indigo-100 hover:to-gray-200 transition"
+        >
+          Back
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+</body>
+</html>

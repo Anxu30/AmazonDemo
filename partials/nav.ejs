@@ -1,0 +1,279 @@
+<style>
+  optgroup{
+   color:#33537a;
+  }
+  .navbar {
+    background: linear-gradient(90deg, #232f3e 0%, #37475a 100%);
+    color: #fff;
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+  }
+  .navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff9900;
+    text-decoration: none;
+    margin-right: 2rem;
+    letter-spacing: 1px;
+  }
+  .navbar-search {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 400px;
+    margin: 0 2rem;
+  }
+  .navbar-search input[type="text"] {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+  }
+  .navbar-search button {
+    padding: 0.4rem 1rem;
+    border: none;
+    background: #ff9900;
+    color: #232f3e;
+    border-radius: 0 4px 4px 0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .navbar-search button:hover {
+    background: #f90;
+    color: #fff;
+  }
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .navbar-links a:hover {
+    background: #ff9900;
+    color: #232f3e;
+  }
+
+  /* Mobile menu toggle button */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  /* Responsive styles for tablets and phones */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0.5rem 1rem;
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .navbar-logo {
+      margin-right: 0;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1.3rem;
+    }
+    
+    .navbar-search {
+      margin: 0 0 1rem 0;
+      max-width: 100%;
+    }
+    
+    .mobile-menu-toggle {
+      display: block;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+    
+    .navbar-links {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 1rem 0;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .navbar-links.active {
+      display: flex;
+    }
+    
+    .navbar-links a {
+      padding: 0.8rem 1rem;
+      text-align: center;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .navbar-links a:last-child {
+      border-bottom: none;
+    }
+    
+    .navbar-links form {
+      margin: 0;
+      width: 100%;
+    }
+    
+    .navbar-links select {
+      width: 100%;
+      padding: 0.8rem;
+      text-align: center;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+    
+    .navbar-links select option {
+      background: #232f3e;
+      color: #fff;
+    }
+  }
+
+  /* Extra small devices (phones) */
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 0.5rem 0.5rem;
+    }
+    
+    .navbar-logo {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .navbar-search {
+      margin: 0 0 0.8rem 0;
+    }
+    
+    .navbar-search input[type="text"] {
+      font-size: 0.9rem;
+      padding: 0.5rem 0.6rem;
+    }
+    
+    .navbar-search button {
+      padding: 0.5rem 0.8rem;
+    }
+    
+    .navbar-links a {
+      font-size: 0.9rem;
+      padding: 0.7rem 0.5rem;
+    }
+  }
+</style>
+<nav class="navbar">
+  <button class="mobile-menu-toggle" onclick="toggleMobileMenu(event)">☰</button>
+  <a href="/" class="navbar-logo">Amazon-Demo</a>
+  <%if(usertype=='host'){%>
+  <form class="navbar-search" action="/products" method="post">
+    <input type="text" name="item" id="itemId" placeholder="Search products...">
+    <button type="submit" aria-label="Search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="vertical-align: middle;">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/>
+        <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </form>
+  <%}%>
+  <div class="navbar-links" id="navbarLinks">
+    <%if(usertype=='guest'){%>
+    <form action="/products/category" method="get" style="margin-right: 1rem;">
+      <select name="category" onchange="this.form.submit()" 
+        style="padding: 0.3rem 0.7rem; border-radius: 3px; border: none; font-size: 1rem;">
+        
+        <option value="">--Select Category--</option>
+        
+      
+        <optgroup label="Clothing">
+          <option value="men">Men</option>
+          <option value="women">Women</option>
+          <option value="kids">Kids</option>
+        </optgroup>
+    
+       
+        <optgroup label="Electronics">
+          <option value="mobiles">Mobile Phones</option>
+          <option value="laptops">Laptops</option>
+          <option value="tvs">Televisions</option>
+          <option value="appliances">Home Appliances</option>
+        </optgroup>
+    
+       
+        
+    
+       
+        <optgroup label="Others">
+          <option value="furniture">Furniture</option>
+          <option value="toys">Toys</option>
+          <option value="sports">Sports</option>
+          <option value="books">Books</option>
+        </optgroup>
+    
+      </select>
+    </form>
+   
+    <a href="/carts">Cart</a>
+    <a href="/orders">Orders</a>
+    <a href="/profile">Profile</a>
+    <%}%>
+    <%if(usertype=='host'){%>
+      <a href="/additems">Add Items</a>
+      <a href="/viewreviews">View Reviews</a>
+      <a href="/viewaccounts">Your Account</a>
+    <%}%>
+    <a href="/contactus">Contact Us</a>
+    <% if (!signin) { %>
+      <a href="/signin">Sign In</a>
+    <% } else { %>
+      <a href="/signout">Sign Out</a>
+    <% } %>
+  </div>
+  
+</nav>
+
+<script>
+function toggleMobileMenu(event) {
+  // Prevent the outside click handler from immediately closing the menu
+  if (event && typeof event.stopPropagation === 'function') {
+    event.stopPropagation();
+  }
+  const navbarLinks = document.getElementById('navbarLinks');
+  navbarLinks.classList.toggle('active');
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', function(event) {
+  const navbar = document.querySelector('.navbar');
+  // Close only when clicking OUTSIDE the navbar
+  if (!navbar.contains(event.target)) {
+    const navbarLinks = document.getElementById('navbarLinks');
+    navbarLinks.classList.remove('active');
+  }
+});
+
+// Close mobile menu when window is resized to desktop size
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) {
+    const navbarLinks = document.getElementById('navbarLinks');
+    navbarLinks.classList.remove('active');
+  }
+});
+</script>

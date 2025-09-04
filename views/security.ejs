@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-pink-100 via-purple-100 to-indigo-100 min-h-screen">
+  <%- include('../partials/nav.ejs') %>
+
+  <div class="flex justify-center items-center min-h-[80vh] px-4">
+    <div class="bg-white bg-opacity-80 backdrop-blur-lg rounded-3xl shadow-2xl p-8 w-full max-w-3xl border border-white/30">
+      <h2 class="text-3xl font-extrabold text-purple-700 mb-8 text-center">🔒 Security Settings</h2>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+      
+        <div class="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Update Password</h3>
+          <p class="mb-4 text-sm opacity-90">Keep your account secure by changing your password regularly.</p>
+          <a href="password" class="bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-purple-100 transition">Change</a>
+        </div>
+
+    
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Login Alerts</h3>
+          <p class="mb-4 text-sm opacity-90">Get notified whenever a login is detected from a new device or location.</p>
+          <a href="loginAlerts" class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-blue-100 transition">Manage</a>
+        </div>
+
+        
+        <div class="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Update Email</h3>
+          <p class="mb-4 text-sm opacity-90">Change the email associated with your account and stay updated.</p>
+          <a href="updateEmail" class="bg-white text-green-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-green-100 transition">Update</a>
+        </div>
+
+       
+        <div class="bg-gradient-to-br from-red-500 to-red-600 text-white rounded-2xl p-6 shadow-lg hover:shadow-2xl hover:scale-105 transition">
+          <h3 class="text-xl font-bold mb-2">Delete Account</h3>
+          <p class="mb-4 text-sm opacity-90">Permanently delete your account and all associated data.</p>
+          <a href="delete" class="bg-white text-red-600 font-semibold px-4 py-2 rounded-lg shadow hover:bg-red-100 transition">Delete</a>
+        </div>
+        
+        <a 
+        href="/profile" 
+        class="flex-1 text-center bg-gradient-to-r from-gray-200 to-indigo-100 text-indigo-700 font-semibold py-2 rounded-xl shadow hover:from-indigo-100 hover:to-gray-200 transition hover:scale-105"
+      >
+        Back
+      </a>
+    
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
