@@ -14,7 +14,7 @@ app.use(express.json());
 app.set('view engine','ejs');
 app.set('views','views');
 const db_Path =
-  "mongodb+srv://root:Qwertyz%40123@anujchaudhary.ymavmtv.mongodb.net/Amazon_Demo?retryWrites=true&w=majority&appName=AnujChaudhary";
+  "mongodb+srv://*******:*******************@anujchaudhary.ymavmtv.mongodb.net/Amazon_Demo?retryWrites=true&w=majority&appName=AnujChaudhary";
 const port = 2430;
 
 const store = new mongoDB({
@@ -45,3 +45,4 @@ mongoose
   .catch((err) => {
     console.log("Connection Error",err);
   });
+
